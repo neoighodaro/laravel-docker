@@ -15,7 +15,7 @@ services:
         restart: unless-stopped
         container_name: redis
         env_file:
-            - /.env
+            - ./.env
         volumes:
           - ./storage/redis:/data
           - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
