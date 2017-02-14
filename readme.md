@@ -10,6 +10,8 @@
 * Docker compose running on the host machine.
 * Basic knowledge of Docker.
 
+<p>&nbsp;</p>
+
 ## Installation
 To get started, the following steps needs to be taken:
 * Clone the repo `git clone git@github.com:neoighodaro/laravel-docker.git appname`
@@ -17,6 +19,8 @@ To get started, the following steps needs to be taken:
 * Copy `.env.example` to `.env` and customise the contents.
 * Run `docker-compose up -d` to start the containers.
 * Visit http://localhost:8888 to see your Laravel Docker instance.
+
+<p>&nbsp;</p>
 
 ## Troubleshooting
 * Port number might be already in use, change from `8888` to another number in your `docker-compose.yml` file.
