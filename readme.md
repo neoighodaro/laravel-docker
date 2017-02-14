@@ -24,4 +24,5 @@ To get started, the following steps needs to be taken:
 
 ## Troubleshooting
 * Port number might be already in use, change from `8888` to another number in your `docker-compose.yml` file.
+* If there are container name conflicts, update the *container_name* value for that container in the `docker-compose.yml` file. 
 * If you have any other issues, [report them](https://github.com/neoighodaro/laravel-docker/issues).
