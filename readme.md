@@ -18,7 +18,7 @@ To get started, the following steps needs to be taken:
 * Change to the directory `cd appname`
 * Copy `.env.example` to `.env` and customise the contents.
 * Run `docker-compose up -d` to start the containers.
-* Visit http://localhost:8888 to see your Laravel Docker instance.
+* Visit **http://localhost:8888** to see your Laravel Docker instance.
 
 <p>&nbsp;</p>
 
