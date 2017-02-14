@@ -10,6 +10,15 @@ services:
             - ./storage/mysql:/var/lib/mysql
             - ./mysql/conf.d:/etc/mysql/conf.d
             - ./storage/logs/mysql:/var/log/mysql
+    redis:
+        build: ./redis
+        restart: unless-stopped
+        container_name: redis
+        env_file:
+            - /.env
+        volumes:
+          - ./storage/redis:/data
+          - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
     web:
         build: ./web
         container_name: web
