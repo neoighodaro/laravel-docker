@@ -1,0 +1,24 @@
+version: '2'
+services:
+    mysql:
+        build: ./mysql
+        restart: unless-stopped
+        container_name: mysql
+        env_file:
+            - ./.env
+        volumes:
+            - ./storage/mysql:/var/lib/mysql
+            - ./mysql/conf.d:/etc/mysql/conf.d
+            - ./storage/logs/mysql:/var/log/mysql
+    web:
+        build: ./web
+        container_name: web
+        restart: unless-stopped
+        env_file:
+            - ./.env
+        ports:
+            - 8888:80
+        volumes:
+            - ./web/src:/var/www
+            - ./storage/app:/var/www/storage/app
+            - ./storage/logs:/var/www/storage/logs
