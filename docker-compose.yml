@@ -1,33 +1,38 @@
-version: '2'
+version: '3'
 services:
-    mysql:
-        build: ./mysql
-        restart: unless-stopped
-        container_name: mysql
-        env_file:
-            - ./.env
-        volumes:
-            - ./storage/mysql:/var/lib/mysql
-            - ./mysql/conf.d:/etc/mysql/conf.d
-            - ./storage/logs/mysql:/var/log/mysql
-    redis:
-        build: ./redis
-        restart: unless-stopped
-        container_name: redis
-        env_file:
-            - ./.env
-        volumes:
-          - ./storage/redis:/data
-          - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
-    web:
-        build: ./web
-        container_name: web
-        restart: unless-stopped
-        env_file:
-            - ./.env
-        ports:
-            - 8888:80
-        volumes:
-            - ./web/src:/var/www
-            - ./storage/app:/var/www/storage/app
-            - ./storage/logs:/var/www/storage/logs
+  webapp:
+    env_file: .env
+    restart: unless-stopped
+    build:
+      context: ./web
+      args:
+        - PHP_VERSION=${PHP_VERSION}
+        - COMPOSER_HASH=${COMPOSER_HASH}
+        - ALPINE_VERSION=${ALPINE_VERSION}
+        - NGINX_HTTP_PORT=${NGINX_HTTP_PORT}
+        - NGINX_HTTPS_PORT=${NGINX_HTTPS_PORT}
+    ports:
+      - '8888:80'
+    volumes:
+      - ./web/src:/var/www
+      - ./logs/web:/var/www/storage/logs
+    links:
+      - redis
+      - mysql
+    depends_on:
+      - redis
+      - mysql
+  redis:
+    build: ./databases/redis
+    restart: unless-stopped
+    volumes:
+      - ./storage/redis:/data
+      - ./databases/redis/redis.conf:/usr/local/etc/redis/redis.conf
+  mysql:
+    env_file: .env
+    restart: unless-stopped
+    build: ./databases/mysql
+    volumes:
+      - ./logs/mysql:/var/log/mysql
+      - ./storage/mysql:/var/lib/mysql
+      - ./databases/mysql/conf.d:/etc/mysql/conf.d

@@ -1,2 +1,2 @@
-mysql/*
-redis/*
+*
+!.gitignore
