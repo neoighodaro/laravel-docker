@@ -16,23 +16,23 @@ services:
     volumes:
       - ./web/src:/var/www
       - ./logs/web:/var/www/storage/logs
-    links:
-      - redis
-      - mysql
-    depends_on:
-      - redis
-      - mysql
-  redis:
-    build: ./databases/redis
-    restart: unless-stopped
-    volumes:
-      - ./storage/redis:/data
-      - ./databases/redis/redis.conf:/usr/local/etc/redis/redis.conf
-  mysql:
-    env_file: .env
-    restart: unless-stopped
-    build: ./databases/mysql
-    volumes:
-      - ./logs/mysql:/var/log/mysql
-      - ./storage/mysql:/var/lib/mysql
-      - ./databases/mysql/conf.d:/etc/mysql/conf.d
+    # links:
+    #   - redis
+    #   - mysql
+    # depends_on:
+    #   - redis
+    #   - mysql
+  # redis:
+  #   build: ./databases/redis
+  #   restart: unless-stopped
+  #   volumes:
+  #     - ./storage/redis:/data
+  #     - ./databases/redis/redis.conf:/usr/local/etc/redis/redis.conf
+  # mysql:
+  #   env_file: .env
+  #   restart: unless-stopped
+  #   build: ./databases/mysql
+  #   volumes:
+  #     - ./logs/mysql:/var/log/mysql
+  #     - ./storage/mysql:/var/lib/mysql
+  #     - ./databases/mysql/conf.d:/etc/mysql/conf.d

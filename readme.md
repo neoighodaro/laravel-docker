@@ -17,16 +17,22 @@
 
 To get started, the following steps needs to be taken:
 
-- Clone the repo `git clone git@github.com:neoighodaro/laravel-docker.git appname`
-- Change to the directory `cd appname`
-- Copy `.env.example` to `.env` and customise the contents.
+- Clone the repo.
+- `cd` to the project directory.
+- `cd` to `web` and run the command to create a new Laravel project `laravel new src`.
+- Copy the `.env.example` file in the root of the project to `.env` and customise.
 - Run `docker-compose up -d` to start the containers.
-- Visit **http://localhost:8888** to see your Laravel Docker instance.
+- Visit **http://localhost:8888** to see your Laravel application.
+
+<p>&nbsp;</p>
+
+## Using Redis and/or MySQL
+
+To use Redis or MySQL, uncomment the service definition in the `docker-compose.yml` file. Also remember to uncomment the `links` and `depends_on` list.
 
 <p>&nbsp;</p>
 
 ## Troubleshooting
 
 - Port number might be already in use, change from `8888` to another number in your `docker-compose.yml` file.
-- If there are container name conflicts, update the _container_name_ value for that container in the `docker-compose.yml` file.
 - If you have any other issues, [report them](https://github.com/neoighodaro/laravel-docker/issues).
