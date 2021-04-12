@@ -2,6 +2,8 @@
 <p align="center">Use this repository to get started with developing your Laravel application in a Docker container.</p>
 <p align="center"><a href="https://neoighodaro.com">Creator</a> | <a href="https://scotch.io/tutorials/get-started-running-laravel-in-a-docker-container">Getting Started</a></p>
 
+> This repo has been discontinued. Please use Laravel Sail or [Little Sail](https://github.com/neoighodaro/little-sail) instead
+
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 
